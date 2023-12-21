@@ -20,10 +20,6 @@ salary.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    hecs_debt: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
     part_time: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
