@@ -11,7 +11,7 @@ taxpayers.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    ueser_id: {
+    user_id: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -33,6 +33,22 @@ taxpayers.init(
       validate: {
         isIn: [["salary", "wage"]], // Only allow 'salary' or 'wage' as valid values
       },
+    },
+    has_dependants: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    medicare: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    has_hecs: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    super_cont: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     },
   },
   {
