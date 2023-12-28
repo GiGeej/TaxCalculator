@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G.A.B.S | Tax Calculator 2023</title>
+    <link rel="stylesheet" href="/TaxCalculator/public/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Let's Get Taxy!</h1>
+      <form action="#">
+        <div class="tax-year">
+          <label for="">Tax Year: </label>
+          <select id="">
+            <option value="">2024</option>
+            <option value="">2023</option>
+            <option value="">2022</option>
+            <option value="">2021</option>
+            <option value="">2020</option>
+          </select>
+        </div>
+        <div class="tax-year">
+          <label for="">State: </label>
+          <select id="">
+            <option value="">Victoria</option>
+            <option value="">New South Wales</option>
+            <option value="">Tasmania</option>
+            <option value="">Western Australia</option>
+            <option value="">South Australia</option>
+            <option value="">Queensland</option>
+          </select>
+        </div>
+        <div class="income">
+          <label for="">Income:</label>
+          <i class="fa-solid fa-dollar-sign"></i>
+          <input type="text" placeholder="" class="income-input" />
+        </div>
+        <div class="results">
+          <p>Estimated Amount</p>
+          <input type="text" placeholder="$0" class="results-input" />
+        </div>
+        <div class="buttons">
+          <button id="calculate">Calculate</button>
+          <button id="reset">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; 2023 G.A.B.S | All rights reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
