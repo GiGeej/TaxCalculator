@@ -11,13 +11,6 @@ taxpayers.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    user_id: {
-      type: DataTypes.STRING,
-      references: {
-        model: 'User',
-        key: "id"
-      }
-    },
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -27,7 +20,7 @@ taxpayers.init(
       allowNull: true,
     },
     date_of_birth: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     income_type: {
@@ -53,10 +46,18 @@ taxpayers.init(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'user',
+        key: "user_id"
+      }
+    },
   },
   {
     sequelize,
     freezeTableName: true,
+    timestamps: false,
     underscored: true,
     modelName: "Taxpayers",
   }

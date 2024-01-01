@@ -1,0 +1,26 @@
+[
+    {
+        "taxpayer_id": 1,
+        "first_name": "John",
+        "last_name": "Doe",
+        "date_of_birth": "1967-01-01",
+        "income_type": "Salary",
+        "has_dependants": false,
+        "medicare": 0,
+        "has_hecs": false,
+        "super_cont": 0,
+        "user_id": 1
+    },
+    {
+        "taxpayer_id": 2,
+        "first_name": "Jane",
+        "last_name": "Doe",
+        "date_of_birth": "1971-01-01",
+        "income_type": "Wage",
+        "has_dependants": true,
+        "medicare": 0,
+        "has_hecs": false,
+        "super_cont": 0,
+        "user_id": 2
+    }
+]
