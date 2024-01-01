@@ -1,11 +1,11 @@
-const router = require('express').router;
-const { taxpayers } = require('../../models');
+const router = require('express').Router();
+const { taxpayers } = require('../../models/taxpayers');
 
 // check logged in status
 const auth = "TODO";
 
 // create new taxpayer
-router.post('/', auth, async(req, res) => {
+router.post('/', async(req, res) => {
     try{
         const newTaxPayer = await taxpayers.create({
             ...req.body,
