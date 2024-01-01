@@ -18,6 +18,4 @@ router.post('/', async(req, res) => {
     }
 })
 
-// view taxpayer
-
 module.exports = router;
