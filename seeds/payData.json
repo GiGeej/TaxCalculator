@@ -1,0 +1,26 @@
+[
+    {
+        "pay_id": 1,
+        "pay_type": "Salary",
+        "is_casual": false,
+        "annual_gross_pay": 78000,
+        "has_hecs": false,
+        "taxpayer_id": 1
+    },
+    {
+        "pay_id": 2,
+        "pay_type": "Wage",
+        "is_casual": true,
+        "annual_gross_pay": 42000,
+        "has_hecs": false,
+        "taxpayer_id": 2
+    },
+    {
+        "pay_id": 3,
+        "pay_type": "Wage",
+        "is_casual": true,
+        "annual_gross_pay": 10000,
+        "has_hecs": false,
+        "taxpayer_id": 3
+    }
+]
