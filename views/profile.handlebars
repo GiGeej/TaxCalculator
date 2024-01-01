@@ -1,13 +1,59 @@
 {{#if logged_in}}
-<div class="card" style="width: 18rem;">
+<h2 style="padding: 1rem;">Hello {{username}}</h2>
+
+<div class="card" style="margin: 1rem;">
+  <h5 class="card-header">Featured</h5>
   <div class="card-body">
-    <h5 class="card-title">Hello, {{username}}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <h5 class="card-title">Create new filing</h5>
+    <p class="card-text">Create a new filing without needing another account</p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCasualModal">
+      Casual
+    </button>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createSalaryModal">
+      Salary
+    </button>
   </div>
 </div>
+
+<!-- Causal -->
+<div class="modal fade dark-dark" id="createCasualModal" tabindex="-1" role="dialog" aria-labelledby="casualModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="casualModalLabel">Create new Casual Filing</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{> newCasual}}
+      </div>
+      <div class="modal-footer">
+       </div>
+    </div>
+  </div>
+</div>
+
+<!-- Salary -->
+<div class="modal fade " id="createSalaryModal" tabindex="-1" role="dialog" aria-labelledby="SalaryModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="SalaryModalLabel">Create new Salary Filing</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{> newSalary}}
+      </div>
+    </div>
+  </div>
+</div>
+{{!--
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+--}}
 {{else}}
-<h1>You must log in to continue</h1>
+{{> login}}
 {{/if}}
