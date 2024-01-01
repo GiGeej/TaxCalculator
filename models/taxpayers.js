@@ -13,7 +13,10 @@ taxpayers.init(
     },
     user_id: {
       type: DataTypes.STRING,
-      allowNull: false,
+      references: {
+        model: 'User',
+        key: "id"
+      }
     },
     first_name: {
       type: DataTypes.STRING,
@@ -55,10 +58,9 @@ taxpayers.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "taxpayers",
+    modelName: "Taxpayers",
   }
 );
 
-taxpayers.belongsTo(taxpayers, { foreignKey: "user_id" });
 
 module.exports = taxpayers;
