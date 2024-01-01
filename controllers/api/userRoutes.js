@@ -69,4 +69,14 @@ router.get('/all', async (req, res) => {
     }
 })
 
+router.get('/:id', async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.params.id);
+        res.status(200).json(userData);
+    } catch(err) {
+        res.status(400).json(err);
+        console.log(err);
+    }
+})
+
 module.exports = router;
