@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { taxpayers } = require('../../models/taxpayers');
+const TaxPayer = require('../../models/taxpayers');
 
 // check logged in status
 const auth = "TODO";
@@ -7,7 +7,7 @@ const auth = "TODO";
 // create new taxpayer
 router.post('/', async(req, res) => {
     try{
-        const newTaxPayer = await taxpayers.create({
+        const newTaxPayer = await TaxPayer.create({
             ...req.body,
             user_id: req.session.user_id, 
         });
@@ -15,6 +15,19 @@ router.post('/', async(req, res) => {
         res.status(200).json(newTaxPayer);
     } catch (err) {
         res.status(500).json(err);
+    }
+})
+
+router.get('/all', async(req, res) => {
+    try{
+        const taxpayerData = await TaxPayer.findAll({
+            attributes: ['first_name', 'last_name'],
+            order: ["taxpayer_id", "ASC"]
+        })
+        res.status(200).json(taxpayerData);
+    } catch(err) {
+        res.status(400).json(err);
+        console.log(err);
     }
 })
 

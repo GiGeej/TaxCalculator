@@ -59,7 +59,9 @@ taxpayers.init(
     freezeTableName: true,
     timestamps: false,
     underscored: true,
-    modelName: "Taxpayers",
+    timestamps: false,
+    modelName: "taxpayers",
+
   }
 );
 
