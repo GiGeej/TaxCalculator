@@ -23,28 +23,9 @@ taxpayers.init(
       type: DataTypes.DATEONLY,
       allowNull: false,
     },
-    income_type: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isIn: [["salary", "wage"]], // Only allow 'salary' or 'wage' as valid values
-      },
-    },
-    has_dependants: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
     medicare: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    has_hecs: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-    },
-    super_cont: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -53,13 +34,19 @@ taxpayers.init(
         key: "user_id"
       }
     },
+    pay_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'pay',
+        key: "pay_id",
+      }
+    }
   },
   {
     sequelize,
     freezeTableName: true,
     timestamps: false,
     underscored: true,
-    timestamps: false,
     modelName: "taxpayers",
 
   }
