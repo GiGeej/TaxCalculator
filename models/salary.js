@@ -37,6 +37,6 @@ salary.init(
   }
 );
 
-salary.belongsTo(taxpayers, { foreignKey: "taxpayer_id" });
+// salary.belongsTo(taxpayers, { foreignKey: "taxpayer_id" });
 
 module.exports = salary;
