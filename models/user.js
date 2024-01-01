@@ -39,7 +39,7 @@ user.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "user",
+    modelName: "User",
   }
 );
 module.exports = user;
