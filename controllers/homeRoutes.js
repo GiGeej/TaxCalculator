@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         // const taxpayers = taxpayerData.map((taxpayer) => taxpayer.get({plain: true}));
 
         res.render('homepage', {
-            taxpayers,
+            // taxpayers,
             logged_in: req.session.logged_in
         });
     } catch (err) {
