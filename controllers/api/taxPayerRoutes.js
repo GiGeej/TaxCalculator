@@ -6,7 +6,7 @@ const User = require("../../models/user");
 const auth = "TODO";
 
 // create new taxpayer
-router.post('/', async(req, res) => {
+router.post('/newUser', async(req, res) => {
     try{
         const newTaxPayer = await TaxPayer.create({
             ...req.body,
