@@ -75,9 +75,9 @@ router.get('/all', async (req, res) => {
 router.get("/currentId", async (req,res) => {
     try{
         req.session.user_id = userData.user_id;
-        console.log("Getting here", req.session.user_id);
+        console.log(req.session.user_id);
         res.status(200);
-        return user_id;
+        return usderData.user_id;
     } catch(err) {
         res.status(400).json(err);
     }
