@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
         });
     } catch (err) {
         res.status(500).json(err);
+
+
     }
 });
 
@@ -38,11 +40,12 @@ router.get('/profile', async(req, res) => {
         const user = userData.get({ plain: true });
 
         res.render('profile', {
-            user,
+            ...user,
             logged_in: req.session.logged_in,
         })
     } catch(err) {
         res.status(400).json(err);
+
     }
 })
 
@@ -52,6 +55,22 @@ router.get('/calculator', async(req, res) => {
         res.render('calculator', {
             logged_in: req.session.logged_in,
         });
+    } catch(err) {
+        res.status(400).json(err);
+
+    }
+})
+
+router.get('/newTaxPayer', async(req,res) => {
+    try{
+
+        const userData = await User.findByPk(req.session.user_id);
+        const user = userData.get({ plain: true });
+
+        res.render('newTaxPayer', {
+            ...user,
+            logged_in: req.session.logged_in,
+        })
     } catch(err) {
         res.status(400).json(err);
     }

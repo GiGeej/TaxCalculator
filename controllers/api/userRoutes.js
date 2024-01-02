@@ -39,9 +39,6 @@ router.post("/login", async (req, res) => {
 
             req.session.user_id = userData.user_id;
             req.session.logged_in = true;
-            console.log("sess: ", req.session);
-
-
 
             console.log("Loggen In")
             res.json({message: "Logged In, Now"});
@@ -72,6 +69,17 @@ router.get('/all', async (req, res) => {
     }catch(err){
         res.status(400).json(err);
         console.log(err);
+    }
+})
+
+router.get("/currentId", async (req,res) => {
+    try{
+        req.session.user_id = userData.user_id;
+        console.log(req.session.user_id);
+        res.status(200);
+        return usderData.user_id;
+    } catch(err) {
+        res.status(400).json(err);
     }
 })
 

@@ -14,7 +14,7 @@ router.post('/newUser', async(req, res) => {
         });
 
         res.status(200).json(newTaxPayer);
-    } catch (err) {
+    } catch (err) { 
         res.status(500).json(err);
     }
 });
