@@ -27,8 +27,13 @@ taxpayers.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    grossAnnual: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     user_id: {
       type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
         model: 'user',
         key: "user_id"

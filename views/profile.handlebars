@@ -1,4 +1,5 @@
 {{#if logged_in}}
+<section class="profile" onload="calculate()">
 <h2 style="padding: 1rem;">Hello {{username}}</h2>
 
 <div class="card" style="margin: 1rem;">
@@ -54,6 +55,11 @@
     </div>
   </div>
 </div>
+</section>
+
+<script>
+  window.onload = calculate();
+</script>
 {{else}}
 {{!-- {{> login}} --}}
 {{/if}}

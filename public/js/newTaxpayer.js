@@ -1,4 +1,5 @@
 const createCasualFormHandler = async (event) => {
+  window.open(URL, "google.com");
   event.preventDefault();
 
   const first_name = document.getElementById("C_first_name").value.trim();
@@ -37,10 +38,14 @@ const createCasualFormHandler = async (event) => {
   }
 
   console.log(document.querySelector(".casualForm"));
+  console.log("hello world");
 
   document
     .querySelector(".casualForm")
-    .addEventListener("submit", createCasualFormHandler);
+  .addEventListener("submit", createCasualFormHandler);
+  // document
+  //   .getElementById("newCasualSubmit")
+  //   .addEventListener("click", createCasualFormHandler);
 };
 //   let calculateHecs = (grossAnnualPay) =>{
 //     if(wage >= 51550 && wage <= 59518){

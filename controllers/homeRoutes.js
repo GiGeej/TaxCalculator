@@ -2,21 +2,11 @@ const router = require("express").Router();
 // const { User, TaxPayers } = require("../models");
 const User = require('../models/user');
 const TaxPayers = require('../models/taxpayers');
+const auth = require('../helpers/auth');
 
 router.get("/", async (req, res) => {
   try {
-    // const taxpayerData = await TaxPayer.findByPk({
-    //     where: {
-    //         user_id: req.session.user_id,
-    //     }
-    // })
-
-    // const taxpayers = taxpayerData.map((taxpayer) => taxpayer.get({plain: true}));
-
-    res.render("homepage", {
-      // taxpayers,
-      logged_in: req.session.logged_in,
-    });
+    res.render("homepage", {});
   } catch (err) {
     res.status(500).json(err);
   }
@@ -31,7 +21,7 @@ router.get("/login", async (req, res) => {
   res.render("login");
 });
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", auth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id);
     const taxpayerData = await TaxPayers.findAll({
@@ -87,7 +77,7 @@ router.get("/calculator", async (req, res) => {
   }
 });
 
-router.get("/newTaxPayer", async (req, res) => {
+router.get("/newTaxPayer",auth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user_id);
     const user = userData.get({ plain: true });

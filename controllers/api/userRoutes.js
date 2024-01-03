@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const User = require("../../models/user");
+const auth = require('../../helpers/auth');
+
 
 router.post("/newUser", async (req, res) => {
   try {
@@ -43,7 +45,7 @@ router.post("/login", async (req, res) => {
           req.session.user_id = userData.user_id;
           req.session.logged_in = true;
 
-          res.status(200).json({ message: "Logging In" });
+          res.status(200).json({ message: "logged in " + userData.username });
         });
       }
     }
@@ -52,7 +54,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
+router.post("/logout", auth, (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -73,7 +75,7 @@ router.get("/all", async (req, res) => {
   }
 });
 
-router.get("/currentId", async (req, res) => {
+router.get("/currentId", auth, async (req, res) => {
   try {
     const userData = await User.findOne({
       where: {
@@ -95,7 +97,7 @@ router.get("/currentId", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", auth, async (req, res) => {
   try {
     if (req.session.logged_in) {
       if (req.session.user_id == req.params.id) {
@@ -107,12 +109,12 @@ router.get("/:id", async (req, res) => {
         res.status(200).json(userData);
       } else {
         res
-          .status(200)
+          .status(500)
           .json({ message: "Cannot access someone elses account!" });
         return;
       }
     } else {
-      res.status(200).json({ message: "Please Log In" });
+      res.status(400).json({ message: "Please Log In" });
       return;
     }
   } catch (err) {

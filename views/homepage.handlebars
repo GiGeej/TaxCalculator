@@ -1,12 +1,9 @@
 {{#if logged_in}}
-<div class="card">
-  <h5 class="card-header">Featured</h5>
+<h5 class="card-header">View Your Profile</h5>
   <div class="card-body">
-    <h5 class="card-title">Create new filing</h5>
-    <p class="card-text">Create a new filing without needing another account</p>
-    <a href="/newTaxPayer" class="btn btn-primary">Try it out</a>
-  </div>
-</div>
+   <button type="button" class="btn btn-primary" disabled>
+      View Profile
+    </button>
 {{else}}
 {{> login}}
 {{/if}}

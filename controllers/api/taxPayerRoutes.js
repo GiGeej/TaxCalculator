@@ -1,9 +1,8 @@
 const router = require("express").Router();
 const TaxPayer = require("../../models/taxpayers");
 const User = require("../../models/user");
+const auth = require('../../helpers/auth')
 
-// check logged in status
-const auth = "TODO";
 
 // create new taxpayer
 router.post("/newUser", async (req, res) => {
@@ -12,10 +11,24 @@ router.post("/newUser", async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-
     res.status(200).json(newTaxPayer);
   } catch (err) {
+    // console.log(err);
     res.status(500).json(err);
+  }
+});
+
+//get number of taxpayer for user
+router.get('/count', async (req, res) => {
+  try{
+    const taxpayerData = await TaxPayer.findAll({
+      where: { user_id: req.session.user_id },
+    })
+    const count = taxpayerData.length;
+    res.status(200).json(count);
+  } catch(err){
+    res.status(500).json(err);
+    console.log(err);
   }
 });
 

@@ -5,8 +5,8 @@
         "last_name": "Doe",
         "date_of_birth": "1967-01-01",
         "medicare": 0,
-        "user_id": 1,
-        "pay_id": 1
+        "grossAnnual": 78000,
+        "user_id": 1
     },
     {
         "taxpayer_id": 2,
@@ -14,16 +14,18 @@
         "last_name": "Doe",
         "date_of_birth": "1971-01-01",
         "medicare": 0,
-        "user_id": 2,
-        "pay_id": 2
+        "grossAnnual": 98000,
+        
+        "user_id": 2
     },
     {
         "taxpayer_id": 3,
         "first_name": "Jeremy",
         "last_name": "Doe",
         "date_of_birth": "1989-01-01",
+        "grossAnnual": 48000,
+        
         "medicare": 0,
-        "user_id": 1,
-        "pay_id": 3
+        "user_id": 1
     }
 ]

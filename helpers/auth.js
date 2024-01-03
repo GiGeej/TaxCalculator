@@ -1,6 +1,7 @@
 const auth = (req, res, next) => {
     if(!req.session.logged_in) {
-        res.redirect('/login'); 
+        console.log("Invalid Session, Logging Out");
+        res.redirect('/'); 
     } else {
         next();
     }
