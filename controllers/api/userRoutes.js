@@ -23,14 +23,12 @@ router.post("/newUser", async (req, res) => {
     }
   } catch (err) {
     //other error
-    console.log("Current Error:", err);
     res.status(400).json(err);
   }
 });
 
 router.post("/login", async (req, res) => {
   try {
-    // console.log(req.body.email);
     const userData = await User.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
@@ -41,21 +39,16 @@ router.post("/login", async (req, res) => {
       if (!validPassword) {
         res.status(400).json({ message: "Incorrect combination" });
       } else {
-        
-      req.session.save(() => {
-        console.log("sess: ", req.session);
+        req.session.save(() => {
+          req.session.user_id = userData.user_id;
+          req.session.logged_in = true;
 
-        req.session.user_id = userData.user_id;
-        req.session.logged_in = true;
-
-        console.log("Logged In");
-        res.status(200).json({ message: "Logging In" });
-      });
-    }
+          res.status(200).json({ message: "Logging In" });
+        });
+      }
     }
   } catch (err) {
     res.status(400).json(err);
-    console.log(err);
   }
 });
 
@@ -77,18 +70,28 @@ router.get("/all", async (req, res) => {
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
-    console.log(err);
   }
 });
 
 router.get("/currentId", async (req, res) => {
   try {
-    req.session.user_id = userData.user_id;
-    console.log(req.session.user_id);
-    res.status(200);
-    return usderData.user_id;
+    const userData = await User.findOne({
+      where: {
+        user_id: req.session.user_id,
+      },
+      attributes: {
+        exclude: ["password"],
+      },
+    });
+    if (!userData) {
+      res.status(400).json("Not Logged In");
+    } else {
+      res.status(200).json(userData.user_id);
+    }
+
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 
@@ -114,7 +117,6 @@ router.get("/:id", async (req, res) => {
     }
   } catch (err) {
     res.status(500).json(err);
-    console.log(err);
   }
 });
 

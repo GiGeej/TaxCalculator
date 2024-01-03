@@ -15,6 +15,10 @@
   </div>
 </div>
 
+{{#each taxpayers as |taxpayer|}}
+{{> displayTaxpayers}}
+{{/each}}
+
 <!-- Causal -->
 <div class="modal fade dark-dark" id="createCasualModal" tabindex="-1" role="dialog" aria-labelledby="casualModalLabel"
   aria-hidden="true">
@@ -51,5 +55,5 @@
   </div>
 </div>
 {{else}}
-{{> login}}
+{{!-- {{> login}} --}}
 {{/if}}

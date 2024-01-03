@@ -1,46 +1,47 @@
 const createCasualFormHandler = async (event) => {
-    event.preventDefault();
-    
+  event.preventDefault();
 
-    const first_name = document.getElementById("C_first_name").value.trim();
-    const last_name = document.getElementById("C_last_name").value.trim();
-    const date_of_birth = document.getElementById("C_dob").value.trim();
-    const is_casual = true;
-    const has_hecs = document.getElementById("C_has_hecs").value;
-    const hoursWorked = document.getElementById("hoursWorked").value.trim();
-    const hourlyWage = document.getElementById("hourlyRate").value.trim();
-    const grossAnnualPay = ((hoursWorked * hourlyWage) * 1.25) * 52;
-    const medicare = grossAnnualPay * 0.02;
-    // const hecsRepayment = () => {
-    // if(has_hecs){
-    //     const repayment = calculateHecs(grossAnnualPay);
-    //     return repayment;
-    // }};
-    const user_id = await fetch("/api/user/currentId");
-    console.log(user_id);
-  
-    if (first_name && last_name && date_of_birth && medicare && user_id) {
-      const response = await fetch('/api/taxpayer/newUser', {
-        method: 'POST',
-        body: JSON.stringify({ first_name, last_name, date_of_birth, medicare, user_id}),
-        headers: { 'Content-Type': 'application/json' },
-      });
-  
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
+  const first_name = document.getElementById("C_first_name").value.trim();
+  const last_name = document.getElementById("C_last_name").value.trim();
+  const date_of_birth = document.getElementById("C_dob").value.trim();
+  const is_casual = true;
+  const has_hecs = document.getElementById("C_has_hecs").value;
+  const hoursWorked = document.getElementById("hoursWorked").value.trim();
+  const hourlyWage = document.getElementById("hourlyRate").value.trim();
+  const grossAnnualPay = hoursWorked * hourlyWage * 1.25 * 52;
+  const medicare = grossAnnualPay * 0.02;
+
+  const getId = await fetch("/api/user/currentId");
+  if (getId.ok) {
+    const get_user_id = await getId.json();
+    if (first_name && last_name && date_of_birth && medicare && get_user_id) {
+      try {
+        const response = await fetch("/api/taxpayer/newUser", {
+          method: "POST",
+          body: JSON.stringify({
+            first_name,
+            last_name,
+            date_of_birth,
+            medicare,
+            user_id: get_user_id,
+          }),
+          headers: { "Content-Type": "application/json" },
+        });
+        if (response.ok) {
+          location.reload;
+        }
+      } catch (err) {
+        console.log(err);
       }
     }
-  };
+  }
 
-  console.log(document.querySelector('.casualForm'));
+  console.log(document.querySelector(".casualForm"));
 
   document
-  .querySelector('.casualForm')
-  .addEventListener('submit', createCasualFormHandler );
-
-
+    .querySelector(".casualForm")
+    .addEventListener("submit", createCasualFormHandler);
+};
 //   let calculateHecs = (grossAnnualPay) =>{
 //     if(wage >= 51550 && wage <= 59518){
 //         return grossAnnualPay * 0.01;
