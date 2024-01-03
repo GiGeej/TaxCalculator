@@ -1,4 +1,5 @@
 {{#if logged_in}}
+<section class="profile" onload="calculate()">
 <h2 style="padding: 1rem;">Hello {{username}}</h2>
 
 <div class="card" style="margin: 1rem;">
@@ -14,6 +15,10 @@
     </button>
   </div>
 </div>
+
+{{#each taxpayers as |taxpayer|}}
+{{> displayTaxpayers}}
+{{/each}}
 
 <!-- Causal -->
 <div class="modal fade dark-dark" id="createCasualModal" tabindex="-1" role="dialog" aria-labelledby="casualModalLabel"
@@ -50,6 +55,11 @@
     </div>
   </div>
 </div>
+</section>
+
+<script>
+  window.onload = calculate();
+</script>
 {{else}}
-{{> login}}
+{{!-- {{> login}} --}}
 {{/if}}

@@ -15,13 +15,10 @@ Pay.init(
             type: DataTypes.BOOLEAN,
             allowNull: false,
         },
-        pay_type: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        annual_gross_pay: {
-            type: DataTypes.FLOAT,
-            allowNull: false,
+        gross_annual: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue: 0,
         },
         has_hecs: {
             type: DataTypes.BOOLEAN,
