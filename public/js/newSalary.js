@@ -8,13 +8,7 @@ const createSalaryFormHandler = async (event) => {
     const has_hecs = document.getElementById("S_has_hecs").value;
     const grossAnnualPay = document.getElementById("grossAnnual")
     const medicare = grossAnnualPay * 0.02;
-    // const hecsRepayment = () => {
-    // if(has_hecs){
-    //     const repayment = calculateHecs(grossAnnualPay);
-    //     return repayment;
-    // }};
     const user_id = await fetch("/api/user/currentId");
-    console.log(user_id);
   
     if (first_name && last_name && date_of_birth && medicare && user_id) {
       const response = await fetch('/api/taxpayer/newUser', {

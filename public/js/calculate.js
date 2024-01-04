@@ -68,7 +68,6 @@ const bracket = (grossAnnual) => {
       },
     ];
   }
-  // console.log("Tax Percent: %", tax[0].taxPercent * 100);
   return tax;
 };
 
@@ -79,4 +78,3 @@ const taxOwed = (grossAnnual) => {
   return taxOwed;
 };
 
-// window.onload(calculate());
