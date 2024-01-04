@@ -1,17 +1,10 @@
 <div class="card" style="margin: 1rem;">
   <h5 class="card-header">{{first_name}} {{last_name}}</h5>
   <div class="card-body">
-    <h5 class="card-title">Belongs to {{users.username}} User</h5>
     <p class="card-text">Gross Annual: <span class="gross-annual" id="gross-annual-{{taxpayer_id}}">{{grossAnnual}}</span></p>
     <p class="card-text">Medicare: <span class="medicare-payment" id="medicare-payment-{{taxpayer_id}}"></span></p>
     <p class="card-text">Tax: <span class="tax-payment" id="tax-payment-{{taxpayer_id}}"></span></p>
     <p class="card-text">Net Annual: <span class="net-annual" id="net-annual-{{taxpayer_id}}"></span></p>
-    {{!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCasualModal">
-      Casual
-    </button>
-    <button type="button" class="btn btn-primary" aria-disabled="true" data-bs-toggle="modal" data-bs-target="#createSalaryModal" disabled>
-      Salary
-    </button> --}}
 
   </div>
 </div>
