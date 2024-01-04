@@ -1,5 +1,4 @@
 const router = require("express").Router();
-// const { User, TaxPayers } = require("../models");
 const User = require('../models/user');
 const TaxPayers = require('../models/taxpayers');
 const auth = require('../helpers/auth');
@@ -35,37 +34,11 @@ router.get("/profile", auth, async (req, res) => {
         taxpayers,
         logged_in: req.session.logged_in
     });
-    // console.log(users);
-    // console.log(taxpayers);
     
   } catch(err) {
   console.log(err);
   }
 });
-// try{
-//     const userData = await User.findByPk(req.session.user_id);
-//     if(userData.ok){
-//         const response = await TaxPayer.findAll({
-//             where: { id: req.session.id },
-//           });
-//           if(response.ok){
-//             res.status(200).json(response);
-//           } else {
-//             res.status(400).json("Error Has Occured");
-//           }
-//     }
-
-//     const user = userData.get({ plain: true });
-
-//     res.render('profile', {
-//         ...user,
-//         logged_in: req.session.logged_in,
-//     })
-// } catch(err) {
-//     res.status(500).json(err);
-
-// }
-// });
 
 router.get("/calculator", async (req, res) => {
   try {

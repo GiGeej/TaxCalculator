@@ -39,13 +39,6 @@ taxpayers.init(
         key: "user_id"
       }
     },
-    pay_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'pay',
-        key: "pay_id",
-      }
-    }
   },
   {
     sequelize,
