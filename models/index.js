@@ -1,5 +1,4 @@
 const User = require('./user');
-const Pay = require('./Pay');
 const Taxpayer = require('./taxpayers');
 
 Taxpayer.belongsTo(User, { 
@@ -11,4 +10,4 @@ User.hasMany(Taxpayer, {
     onDelete: "CASCASE"
 })
 
-module.exports = { User, Taxpayer, Pay };
+module.exports = { User, Taxpayer};
